@@ -1,0 +1,127 @@
+from pathlib import Path
+
+html = r'''<!doctype html>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GameTop — UC & Game Top Up</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#18202b;--muted:#687386;--brand:#6d35ff;--brand2:#8b5cf6;--line:#e8ebf1;--green:#16a34a;--shadow:0 10px 30px rgba(25,20,55,.08)}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
+a{text-decoration:none;color:inherit}.top{background:#17121f;color:#fff;font-size:13px;text-align:center;padding:8px}
+header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.nav{max-width:1180px;margin:auto;height:68px;display:flex;align-items:center;gap:28px;padding:0 18px}
+.logo{font-weight:900;font-size:24px;letter-spacing:-1px;color:var(--brand)}.logo span{color:#111827}
+.navlinks{display:flex;gap:22px;font-size:14px;color:#4b5563}.navlinks a:hover{color:var(--brand)}
+.actions{margin-left:auto;display:flex;gap:10px;align-items:center}.btn{border:0;border-radius:11px;padding:11px 16px;font-weight:700;cursor:pointer}.btn.primary{background:var(--brand);color:white}.btn.light{background:#f2efff;color:var(--brand)}
+.hero{max-width:1180px;margin:28px auto 0;padding:0 18px}.banner{background:linear-gradient(115deg,#25134c,#6d35ff 58%,#a78bfa);color:white;border-radius:24px;padding:42px;min-height:260px;display:flex;align-items:center;overflow:hidden;position:relative}
+.banner:after{content:"UC";position:absolute;right:35px;bottom:-55px;font-size:210px;font-weight:1000;opacity:.10}
+.banner h1{font-size:42px;line-height:1.04;margin:0 0 12px;max-width:600px}.banner p{max-width:590px;color:#eee7ff;font-size:16px}.hero-buttons{display:flex;gap:10px;margin-top:22px}.btn.white{background:white;color:#32186b}
+.section{max-width:1180px;margin:30px auto;padding:0 18px}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.section h2{margin:0;font-size:23px}.muted{color:var(--muted);font-size:14px}
+.gamegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.game{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);cursor:pointer;transition:.2s}.game:hover{transform:translateY(-3px)}.gamepic{height:105px;border-radius:14px;display:grid;place-items:center;color:white;font-size:34px;font-weight:900;background:linear-gradient(135deg,#111827,#7c3aed)}.game:nth-child(2) .gamepic{background:linear-gradient(135deg,#0f766e,#22c55e)}.game:nth-child(3) .gamepic{background:linear-gradient(135deg,#111827,#ef4444)}.game:nth-child(4) .gamepic{background:linear-gradient(135deg,#1e3a8a,#38bdf8)}.game h3{margin:12px 0 4px;font-size:16px}.price{font-size:13px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}.icon{width:42px;height:42px;border-radius:12px;background:#f0ebff;color:var(--brand);display:grid;place-items:center;font-weight:900;margin-bottom:12px}.feature h3{margin:0 0 6px}.feature p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
+footer{margin-top:50px;background:#17121f;color:#ddd;padding:35px 18px}.foot{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:20px}.foot small{color:#aaa}
+.modal{display:none;position:fixed;inset:0;background:rgba(10,8,18,.58);z-index:30;align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}.box{background:#fff;width:min(520px,100%);border-radius:22px;padding:24px;box-shadow:0 30px 80px rgba(0,0,0,.25)}.boxhead{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#f2f3f5;border-radius:10px;width:38px;height:38px;cursor:pointer;font-size:20px}.packgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}.pack{border:1px solid var(--line);background:#fff;border-radius:13px;padding:14px;text-align:left;cursor:pointer}.pack.selected{border:2px solid var(--brand);background:#f7f3ff}.pack strong{display:block}.pack span{font-size:13px;color:var(--muted)}label{font-size:13px;font-weight:700;display:block;margin:13px 0 6px}input{width:100%;padding:13px;border:1px solid #dfe3ea;border-radius:11px;font-size:15px}.upi{background:#f4fff6;border:1px solid #b8e8c0;border-radius:14px;padding:14px;margin:15px 0}.upi strong{color:#087a24}.maint{display:flex;align-items:center;justify-content:space-between;padding:12px;border:1px dashed #d7dbe3;border-radius:11px;margin-top:10px;font-size:13px}.status{font-weight:800;color:#b45309}.notice{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}
+@media(max-width:800px){.navlinks{display:none}.banner{padding:28px}.banner h1{font-size:32px}.gamegrid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.foot{flex-direction:column}.nav{gap:10px}}
+@media(max-width:480px){.gamegrid{grid-template-columns:1fr}.packgrid{grid-template-columns:1fr}.banner{min-height:300px}}
+</style>
+</head>
+<body>
+<div class="top">⚡ Instant game top-up • UPI payment available</div>
+<header>
+  <nav class="nav">
+    <div class="logo">Game<span>Top</span></div>
+    <div class="navlinks"><a href="#games">Games</a><a href="#offers">Offers</a><a href="#why">Why us</a><a href="#support">Support</a></div>
+    <div class="actions"><button class="btn light" onclick="openTopup()">Top Up</button><button class="btn primary" onclick="openTopup()">Buy UC</button></div>
+  </nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="banner">
+    <div>
+      <h1>Power up your game.<br>Get UC in seconds.</h1>
+      <p>Simple, clean and mobile-friendly game top-up storefront. Choose a pack, enter your player ID and pay using UPI.</p>
+      <div class="hero-buttons"><button class="btn white" onclick="openTopup()">Buy UC Now</button><a class="btn" style="background:#ffffff22;color:#fff;border:1px solid #ffffff44" href="#games">Explore Games</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="games">
+  <div class="sectionhead"><div><h2>Popular Games</h2><div class="muted">Fast top-up for your favourite titles</div></div></div>
+  <div class="gamegrid">
+    <div class="game" onclick="openTopup('BGMI')"><div class="gamepic">BGMI</div><h3>Battlegrounds Mobile India</h3><div class="price">UC Top Up • From ₹75</div></div>
+    <div class="game" onclick="openTopup('MLBB')"><div class="gamepic">ML</div><h3>Mobile Legends</h3><div class="price">Diamonds • From ₹49</div></div>
+    <div class="game" onclick="openTopup('VAL')"><div class="gamepic">VAL</div><h3>Valorant</h3><div class="price">VP • From ₹99</div></div>
+    <div class="game" onclick="openTopup('ROBLOX')"><div class="gamepic">R</div><h3>Roblox</h3><div class="price">Robux • From ₹99</div></div>
+  </div>
+</section>
+
+<section class="section" id="offers">
+  <div class="sectionhead"><div><h2>Today's Highlights</h2><div class="muted">Good value, clear pricing</div></div></div>
+  <div class="cards">
+    <div class="feature"><div class="icon">⚡</div><h3>Quick Checkout</h3><p>Select a denomination and continue to the payment screen without unnecessary steps.</p></div>
+    <div class="feature"><div class="icon">₹</div><h3>UPI Ready</h3><p>Use your own UPI app to complete payment. Add your merchant UPI ID in the HTML settings below.</p></div>
+    <div class="feature"><div class="icon">✓</div><h3>Transparent Status</h3><p>Other payment methods can remain marked as maintenance until you connect a real payment gateway.</p></div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="sectionhead"><div><h2>Payment Methods</h2><div class="muted">Only the method you enable is shown as active</div></div></div>
+  <div class="cards">
+    <div class="feature"><div class="icon">UPI</div><h3>UPI</h3><p>Active — Google Pay, PhonePe, Paytm and other UPI apps can be used through your merchant UPI ID.</p></div>
+    <div class="feature"><div class="icon">CC</div><h3>Cards</h3><p>Maintenance</p><div class="maint"><span>Visa / Mastercard</span><span class="status">Maintenance</span></div></div>
+    <div class="feature"><div class="icon">₿</div><h3>Other Methods</h3><p>Maintenance</p><div class="maint"><span>Wallet / Netbanking</span><span class="status">Maintenance</span></div></div>
+  </div>
+</section>
+</main>
+
+<footer id="support">
+  <div class="foot"><div><div class="logo" style="color:#a78bfa">Game<span style="color:#fff">Top</span></div><small>Independent game top-up storefront.</small></div><div><small>Support: add your WhatsApp / email here<br>© 2026 GameTop</small></div></div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="box">
+    <div class="boxhead"><div><h2 style="margin:0">Buy UC</h2><div class="muted" id="gameLabel">BGMI</div></div><button class="close" onclick="closeTopup()">×</button></div>
+    <label>Player ID</label><input id="player" placeholder="Enter your game player ID">
+    <label>Select UC Pack</label>
+    <div class="packgrid">
+      <button class="pack selected" onclick="selectPack(this,'60 UC','₹75')"><strong>60 UC</strong><span>₹75</span></button>
+      <button class="pack" onclick="selectPack(this,'325 UC','₹380')"><strong>325 UC</strong><span>₹380</span></button>
+      <button class="pack" onclick="selectPack(this,'660 UC','₹750')"><strong>660 UC</strong><span>₹750</span></button>
+      <button class="pack" onclick="selectPack(this,'1800 UC','₹1,900')"><strong>1800 UC</strong><span>₹1,900</span></button>
+    </div>
+    <label>Email / WhatsApp (optional)</label><input id="contact" placeholder="For order confirmation">
+    <div class="upi"><strong>UPI Payment</strong><br><span id="upiText">Pay to: yourupi@upi</span><br><small>After paying, keep the UPI transaction ID. Replace the demo UPI ID in the HTML with your real merchant UPI ID.</small></div>
+    <button class="btn primary" style="width:100%;font-size:16px" onclick="pay()">Continue to UPI</button>
+    <div class="notice">Demo storefront: this HTML does not independently verify UPI payments or deliver UC. For real automatic fulfilment, connect a legitimate payment gateway/webhook and an authorised game top-up API.</div>
+  </div>
+</div>
+
+<script>
+const CONFIG={upiId:"meena556@fam",upiName:"GameTop"};
+let currentGame="BGMI",selectedPack="60 UC",selectedPrice="₹75";
+document.getElementById("upiText").textContent="Pay to: "+CONFIG.upiId;
+
+function openTopup(game="BGMI"){currentGame=game;document.getElementById("gameLabel").textContent=currentGame;document.getElementById("modal").classList.add("open")}
+function closeTopup(){document.getElementById("modal").classList.remove("open")}
+function selectPack(el,pack,price){document.querySelectorAll(".pack").forEach(x=>x.classList.remove("selected"));el.classList.add("selected");selectedPack=pack;selectedPrice=price}
+function pay(){
+  const player=document.getElementById("player").value.trim();
+  if(!player){alert("Please enter your Player ID.");return}
+  if(CONFIG.upiId==="meena556@fam"){alert("Demo mode: पहले HTML में CONFIG.upiId को अपनी merchant UPI ID से बदलें.");return}
+  const amount=selectedPrice.replace(/[₹,]/g,"");
+  const note=encodeURIComponent(currentGame+" "+selectedPack+" | Player "+player);
+  const url=`upi://pay?pa=${encodeURIComponent(CONFIG.upiId)}&pn=${encodeURIComponent(CONFIG.upiName)}&am=${amount}&cu=INR&tn=${note}`;
+  window.location.href=url;
+}
+document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeTopup()});
+</script>
+</body>
+</html>'''
+
+path = Path("/mnt/data/gametop_uc_store.html")
+path.write_text(html, encoding="utf-8")
+print(f"Created: {path}")
+
