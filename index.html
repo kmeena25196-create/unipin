@@ -3,480 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>UniTopUp - UC Store</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f6fa;
-    color: #171717;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.topbar {
-    background: #17121f;
-    color: white;
-    text-align: center;
-    padding: 9px;
-    font-size: 13px;
-}
-
-header {
-    background: white;
-    border-bottom: 1px solid #e5e5e5;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-}
-
-.nav {
-    max-width: 1150px;
-    margin: auto;
-    height: 68px;
-    padding: 0 18px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-.logo {
-    color: #6d35ff;
-    font-size: 24px;
-    font-weight: 900;
-}
-
-.logo span {
-    color: #111;
-}
-
-.navlinks {
-    display: flex;
-    gap: 22px;
-    color: #555;
-    font-size: 14px;
-}
-
-.navlinks a:hover {
-    color: #6d35ff;
-}
-
-.navbutton {
-    margin-left: auto;
-    background: #6d35ff;
-    color: white;
-    border: none;
-    padding: 11px 18px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.hero {
-    max-width: 1150px;
-    margin: 28px auto;
-    padding: 0 18px;
-}
-
-.banner {
-    min-height: 280px;
-    border-radius: 24px;
-    padding: 45px;
-    color: white;
-    background: linear-gradient(
-        115deg,
-        #241149,
-        #6d35ff,
-        #9b7cff
-    );
-    display: flex;
-    align-items: center;
-}
-
-.banner h1 {
-    font-size: 43px;
-    line-height: 1.05;
-    margin-bottom: 15px;
-}
-
-.banner p {
-    max-width: 600px;
-    color: #eee;
-    line-height: 1.6;
-}
-
-.hero-btn {
-    margin-top: 22px;
-    background: white;
-    color: #36156e;
-    border: none;
-    padding: 13px 20px;
-    border-radius: 11px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.section {
-    max-width: 1150px;
-    margin: 35px auto;
-    padding: 0 18px;
-}
-
-.section-title {
-    margin-bottom: 18px;
-}
-
-.section-title h2 {
-    font-size: 24px;
-}
-
-.section-title p {
-    color: #707070;
-    margin-top: 5px;
-}
-
-.packages {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 17px;
-}
-
-.package {
-    background: white;
-    border: 1px solid #e5e5e5;
-    border-radius: 17px;
-    padding: 20px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.package:hover {
-    transform: translateY(-4px);
-    border-color: #6d35ff;
-}
-
-.ucbox {
-    height: 100px;
-    border-radius: 13px;
-    background: linear-gradient(135deg,#171717,#7139ef);
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 29px;
-    font-weight: 900;
-}
-
-.package h3 {
-    margin-top: 13px;
-    font-size: 18px;
-}
-
-.price {
-    color: #6d35ff;
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 7px;
-}
-
-.buy-small {
-    width: 100%;
-    margin-top: 13px;
-    border: none;
-    background: #6d35ff;
-    color: white;
-    padding: 11px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.features {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 17px;
-}
-
-.feature {
-    background: white;
-    border: 1px solid #e5e5e5;
-    border-radius: 16px;
-    padding: 21px;
-}
-
-.feature-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 11px;
-    background: #eee8ff;
-    color: #6d35ff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    margin-bottom: 12px;
-}
-
-.feature h3 {
-    margin-bottom: 7px;
-}
-
-.feature p {
-    color: #666;
-    line-height: 1.5;
-    font-size: 14px;
-}
-
-.maintenance {
-    margin-top: 12px;
-    padding: 11px;
-    border: 1px dashed #ccc;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 13px;
-}
-
-.status {
-    color: #b45309;
-    font-weight: bold;
-}
-
-footer {
-    margin-top: 50px;
-    background: #17121f;
-    color: white;
-    padding: 35px 18px;
-}
-
-.footer-inner {
-    max-width: 1150px;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-}
-
-.footer-small {
-    color: #aaa;
-    font-size: 13px;
-    line-height: 1.7;
-}
-
-.telegram {
-    color: #45b7ed;
-    font-weight: bold;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f5f6fa;color:#171717}
+a{text-decoration:none;color:inherit}
+.topbar{background:#17121f;color:#fff;text-align:center;padding:9px;font-size:13px}
+header{background:#fff;border-bottom:1px solid #e5e5e5;position:sticky;top:0;z-index:10}
+.nav{max-width:1150px;margin:auto;height:68px;padding:0 18px;display:flex;align-items:center;gap:30px}
+.logo{color:#6d35ff;font-size:24px;font-weight:900}
+.logo span{color:#111}
+.navlinks{display:flex;gap:22px;color:#555;font-size:14px}
+.navlinks a:hover{color:#6d35ff}
+.navbutton{margin-left:auto;background:#6d35ff;color:#fff;border:0;padding:11px 18px;border-radius:10px;font-weight:bold;cursor:pointer}
+.hero{max-width:1150px;margin:28px auto;padding:0 18px}
+.banner{min-height:280px;border-radius:24px;padding:45px;color:#fff;background:linear-gradient(115deg,#241149,#6d35ff,#9b7cff);display:flex;align-items:center}
+.banner h1{font-size:43px;line-height:1.05;margin-bottom:15px}
+.banner p{max-width:600px;color:#eee;line-height:1.6}
+.hero-btn{margin-top:22px;background:#fff;color:#36156e;border:0;padding:13px 20px;border-radius:11px;font-weight:bold;cursor:pointer}
+.section{max-width:1150px;margin:35px auto;padding:0 18px}
+.section-title{margin-bottom:18px}
+.section-title h2{font-size:24px}
+.section-title p{color:#707070;margin-top:5px}
+.packages{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.package{background:#fff;border:1px solid #e5e5e5;border-radius:17px;padding:20px;box-shadow:0 8px 25px rgba(0,0,0,.06);cursor:pointer;transition:.2s}
+.package:hover{transform:translateY(-4px);border-color:#6d35ff}
+.ucbox{height:100px;border-radius:13px;background:linear-gradient(135deg,#171717,#7139ef);color:#fff;display:flex;justify-content:center;align-items:center;font-size:29px;font-weight:900}
+.package h3{margin-top:13px;font-size:18px}
+.price{color:#6d35ff;font-size:20px;font-weight:bold;margin-top:7px}
+.buy-small{width:100%;margin-top:13px;border:0;background:#6d35ff;color:#fff;padding:11px;border-radius:10px;font-weight:bold;cursor:pointer}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.feature{background:#fff;border:1px solid #e5e5e5;border-radius:16px;padding:21px}
+.feature-icon{width:42px;height:42px;border-radius:11px;background:#eee8ff;color:#6d35ff;display:flex;justify-content:center;align-items:center;font-weight:bold;margin-bottom:12px}
+.feature h3{margin-bottom:7px}
+.feature p{color:#666;line-height:1.5;font-size:14px}
+.maintenance{margin-top:12px;padding:11px;border:1px dashed #ccc;border-radius:10px;display:flex;justify-content:space-between;font-size:13px}
+.status{color:#b45309;font-weight:bold}
+footer{margin-top:50px;background:#17121f;color:#fff;padding:35px 18px}
+.footer-inner{max-width:1150px;margin:auto;display:flex;justify-content:space-between;gap:20px}
+.footer-small{color:#aaa;font-size:13px;line-height:1.7}
+.telegram{color:#45b7ed;font-weight:bold}
 
 /* MODAL */
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);z-index:50;align-items:center;justify-content:center;padding:15px}
+.modal.active{display:flex}
+.modal-box{background:#fff;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;border-radius:21px;padding:25px}
+.modal-header{display:flex;justify-content:space-between;align-items:center}
+.modal-header h2{font-size:24px}
+.close{width:38px;height:38px;border:0;border-radius:10px;background:#eee;font-size:21px;cursor:pointer}
+label{display:block;margin-top:17px;margin-bottom:7px;font-size:13px;font-weight:bold}
+input{width:100%;padding:13px;border:1px solid #d9dce2;border-radius:10px;font-size:15px;outline:0}
+input:focus{border-color:#6d35ff}
+.modal-packages{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.modal-pack{background:#fff;border:1px solid #ddd;border-radius:12px;padding:13px;text-align:left;cursor:pointer}
+.modal-pack strong{display:block}
+.modal-pack span{color:#777;font-size:13px}
+.modal-pack.selected{border:2px solid #6d35ff;background:#f5f1ff}
+.upi-box{margin-top:17px;padding:15px;border-radius:13px;background:#f1fff4;border:1px solid #b8e7c0;line-height:1.6}
+.upi-box strong{color:#087a24}
+.pay-button{width:100%;margin-top:15px;border:0;border-radius:11px;padding:14px;background:#6d35ff;color:#fff;font-size:16px;font-weight:bold;cursor:pointer}
+.after-payment{display:none;margin-top:15px;background:#effcf2;border:1px solid #b9e7c1;border-radius:13px;padding:15px;line-height:1.6}
+.after-payment.show{display:block}
+.telegram-button{display:inline-block;margin-top:10px;background:#229ed9;color:#fff;padding:10px 15px;border-radius:9px;font-weight:bold}
+.order-note{margin-top:13px;padding:13px;background:#f6f6f6;border-radius:11px;font-size:12px;color:#666;line-height:1.6}
 
-.modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.65);
-    z-index: 50;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
+@media(max-width:800px){
+.navlinks{display:none}
+.banner{padding:30px}
+.banner h1{font-size:34px}
+.packages{grid-template-columns:repeat(2,1fr)}
+.features{grid-template-columns:1fr}
+.footer-inner{flex-direction:column}
 }
-
-.modal.active {
-    display: flex;
-}
-
-.modal-box {
-    background: white;
-    width: 100%;
-    max-width: 520px;
-    max-height: 92vh;
-    overflow-y: auto;
-    border-radius: 21px;
-    padding: 25px;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-header h2 {
-    font-size: 24px;
-}
-
-.close {
-    width: 38px;
-    height: 38px;
-    border: none;
-    border-radius: 10px;
-    background: #eee;
-    font-size: 21px;
-    cursor: pointer;
-}
-
-label {
-    display: block;
-    margin-top: 17px;
-    margin-bottom: 7px;
-    font-size: 13px;
-    font-weight: bold;
-}
-
-input {
-    width: 100%;
-    padding: 13px;
-    border: 1px solid #d9dce2;
-    border-radius: 10px;
-    font-size: 15px;
-    outline: none;
-}
-
-input:focus {
-    border-color: #6d35ff;
-}
-
-.modal-packages {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.modal-pack {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    padding: 13px;
-    text-align: left;
-    cursor: pointer;
-}
-
-.modal-pack strong {
-    display: block;
-}
-
-.modal-pack span {
-    color: #777;
-    font-size: 13px;
-}
-
-.modal-pack.selected {
-    border: 2px solid #6d35ff;
-    background: #f5f1ff;
-}
-
-.upi-box {
-    margin-top: 17px;
-    padding: 15px;
-    border-radius: 13px;
-    background: #f1fff4;
-    border: 1px solid #b8e7c0;
-    line-height: 1.6;
-}
-
-.upi-box strong {
-    color: #087a24;
-}
-
-.pay-button {
-    width: 100%;
-    margin-top: 15px;
-    border: none;
-    border-radius: 11px;
-    padding: 14px;
-    background: #6d35ff;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.order-note {
-    margin-top: 13px;
-    padding: 13px;
-    background: #f6f6f6;
-    border-radius: 11px;
-    font-size: 12px;
-    color: #666;
-    line-height: 1.6;
-}
-
-.after-payment {
-    display: none;
-    margin-top: 15px;
-    background: #effcf2;
-    border: 1px solid #b9e7c1;
-    border-radius: 13px;
-    padding: 15px;
-    line-height: 1.6;
-}
-
-.after-payment.show {
-    display: block;
-}
-
-.telegram-button {
-    display: inline-block;
-    margin-top: 10px;
-    background: #229ed9;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 9px;
-    font-weight: bold;
-}
-
-@media(max-width:800px) {
-
-    .navlinks {
-        display: none;
-    }
-
-    .banner {
-        padding: 30px;
-    }
-
-    .banner h1 {
-        font-size: 34px;
-    }
-
-    .packages {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .features {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-inner {
-        flex-direction: column;
-    }
-}
-
-@media(max-width:500px) {
-
-    .packages {
-        grid-template-columns: 1fr;
-    }
-
-    .modal-packages {
-        grid-template-columns: 1fr;
-    }
-
-    .banner {
-        min-height: 300px;
-    }
+@media(max-width:500px){
+.packages{grid-template-columns:1fr}
+.modal-packages{grid-template-columns:1fr}
+.banner{min-height:300px}
 }
 </style>
 </head>
@@ -484,280 +87,165 @@ input:focus {
 <body>
 
 <div class="topbar">
-    ⚡ Fast UC Top Up • UPI Payment Available
+⚡ Fast UC Top Up • UPI Payment Available
 </div>
 
 <header>
-
 <nav class="nav">
 
-    <div class="logo">
-        Uni<span>TopUp</span>
-    </div>
+<div class="logo">
+Uni<span>TopUp</span>
+</div>
 
-    <div class="navlinks">
-        <a href="#packages">UC Packages</a>
-        <a href="#payment">Payment</a>
-        <a href="#contact">Contact</a>
-    </div>
+<div class="navlinks">
+<a href="#packages">UC Packages</a>
+<a href="#payment">Payment</a>
+<a href="#contact">Contact</a>
+</div>
 
-    <button class="navbutton" onclick="openModal()">
-        Buy UC
-    </button>
+<button class="navbutton" onclick="openModal()">
+Buy UC
+</button>
 
 </nav>
-
 </header>
 
 <main>
 
 <section class="hero">
 
-    <div class="banner">
+<div class="banner">
 
-        <div>
+<div>
 
-            <h1>
-                Get UC.<br>
-                Simple & Fast.
-            </h1>
+<h1>
+Get UC.<br>
+Simple & Fast.
+</h1>
 
-            <p>
-                Choose your UC package, enter your Player ID
-                and continue with UPI payment.
-                After payment, send your order details on Telegram.
-            </p>
+<p>
+Choose your UC package, enter your Player ID
+and continue with UPI payment.
+After payment, send your order details on Telegram.
+</p>
 
-            <button class="hero-btn" onclick="openModal()">
-                Buy UC Now
-            </button>
+<button class="hero-btn" onclick="openModal()">
+Buy UC Now
+</button>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
 
 
 <section class="section" id="packages">
 
-    <div class="section-title">
+<div class="section-title">
 
-        <h2>UC Packages</h2>
+<h2>UC Packages</h2>
 
-        <p>
-            Select your required UC package
-        </p>
+<p>Select your required UC package</p>
 
-    </div>
+</div>
 
+<div class="packages">
 
-    <div class="packages">
+<div class="package" onclick="openModal('60 UC','60')">
+<div class="ucbox">60 UC</div>
+<h3>60 UC</h3>
+<div class="price">₹60</div>
+<button class="buy-small">Buy Now</button>
+</div>
 
+<div class="package" onclick="openModal('380 UC','300')">
+<div class="ucbox">380 UC</div>
+<h3>380 UC</h3>
+<div class="price">₹300</div>
+<button class="buy-small">Buy Now</button>
+</div>
 
-        <div class="package" onclick="openModal('60 UC','60')">
+<div class="package" onclick="openModal('750 UC','550')">
+<div class="ucbox">750 UC</div>
+<h3>750 UC</h3>
+<div class="price">₹550</div>
+<button class="buy-small">Buy Now</button>
+</div>
 
-            <div class="ucbox">
-                60 UC
-            </div>
+<div class="package" onclick="openModal('1850 UC','1600')">
+<div class="ucbox">1850 UC</div>
+<h3>1850 UC</h3>
+<div class="price">₹1,600</div>
+<button class="buy-small">Buy Now</button>
+</div>
 
-            <h3>
-                60 UC
-            </h3>
+<div class="package" onclick="openModal('3850 UC','3500')">
+<div class="ucbox">3850 UC</div>
+<h3>3850 UC</h3>
+<div class="price">₹3,500</div>
+<button class="buy-small">Buy Now</button>
+</div>
 
-            <div class="price">
-                ₹60
-            </div>
+<div class="package" onclick="openModal('8100 UC','6000')">
+<div class="ucbox">8100 UC</div>
+<h3>8100 UC</h3>
+<div class="price">₹6,000</div>
+<button class="buy-small">Buy Now</button>
+</div>
 
-            <button class="buy-small">
-                Buy Now
-            </button>
-
-        </div>
-
-
-        <div class="package" onclick="openModal('380 UC','300')">
-
-            <div class="ucbox">
-                380 UC
-            </div>
-
-            <h3>
-                380 UC
-            </h3>
-
-            <div class="price">
-                ₹300
-            </div>
-
-            <button class="buy-small">
-                Buy Now
-            </button>
-
-        </div>
-
-
-        <div class="package" onclick="openModal('750 UC','550')">
-
-            <div class="ucbox">
-                750 UC
-            </div>
-
-            <h3>
-                750 UC
-            </h3>
-
-            <div class="price">
-                ₹550
-            </div>
-
-            <button class="buy-small">
-                Buy Now
-            </button>
-
-        </div>
-
-
-        <div class="package" onclick="openModal('1850 UC','1600')">
-
-            <div class="ucbox">
-                1850 UC
-            </div>
-
-            <h3>
-                1850 UC
-            </h3>
-
-            <div class="price">
-                ₹1,600
-            </div>
-
-            <button class="buy-small">
-                Buy Now
-            </button>
-
-        </div>
-
-
-        <div class="package" onclick="openModal('3850 UC','3500')">
-
-            <div class="ucbox">
-                3850 UC
-            </div>
-
-            <h3>
-                3850 UC
-            </h3>
-
-            <div class="price">
-                ₹3,500
-            </div>
-
-            <button class="buy-small">
-                Buy Now
-            </button>
-
-        </div>
-
-
-        <div class="package" onclick="openModal('8100 UC','6000')">
-
-            <div class="ucbox">
-                8100 UC
-            </div>
-
-            <h3>
-                8100 UC
-            </h3>
-
-            <div class="price">
-                ₹6,000
-            </div>
-
-            <button class="buy-small">
-                Buy Now
-            </button>
-
-        </div>
-
-
-    </div>
-
+</div>
 </section>
 
 
 <section class="section" id="payment">
 
-    <div class="features">
+<div class="features">
 
+<div class="feature">
 
-        <div class="feature">
+<div class="feature-icon">UPI</div>
 
-            <div class="feature-icon">
-                UPI
-            </div>
+<h3>UPI Payment</h3>
 
-            <h3>
-                UPI Payment
-            </h3>
+<p>
+Pay using UPI.<br>
+UPI ID: <strong>meena556@fam</strong>
+</p>
 
-            <p>
-                Pay using UPI.
-                UPI ID:
-                <strong>meena556@fam</strong>
-            </p>
+</div>
 
-        </div>
+<div class="feature">
 
+<div class="feature-icon">✓</div>
 
-        <div class="feature">
+<h3>Easy Ordering</h3>
 
-            <div class="feature-icon">
-                ✓
-            </div>
+<p>
+Select a package and enter your Player ID
+to start your order.
+</p>
 
-            <h3>
-                Easy Ordering
-            </h3>
+</div>
 
-            <p>
-                Select a package and enter your Player ID
-                to start your order.
-            </p>
+<div class="feature">
 
-        </div>
+<div class="feature-icon">₹</div>
 
+<h3>Other Payments</h3>
 
-        <div class="feature">
+<p>
+Cards, wallets and netbanking are currently unavailable.
+</p>
 
-            <div class="feature-icon">
-                ₹
-            </div>
+<div class="maintenance">
+<span>Other methods</span>
+<span class="status">Maintenance</span>
+</div>
 
-            <h3>
-                Other Payments
-            </h3>
+</div>
 
-            <p>
-                Cards, wallets and netbanking are currently unavailable.
-            </p>
-
-            <div class="maintenance">
-
-                <span>
-                    Other methods
-                </span>
-
-                <span class="status">
-                    Maintenance
-                </span>
-
-            </div>
-
-        </div>
-
-
-    </div>
+</div>
 
 </section>
 
@@ -768,43 +256,39 @@ input:focus {
 
 <div class="footer-inner">
 
-    <div>
+<div>
 
-        <div class="logo">
-            Uni<span style="color:white">TopUp</span>
-        </div>
+<div class="logo">
+Uni<span style="color:white">TopUp</span>
+</div>
 
-        <div class="footer-small">
-            UC top-up storefront
-        </div>
+<div class="footer-small">
+UC top-up storefront
+</div>
 
-    </div>
+</div>
 
+<div class="footer-small">
 
-    <div class="footer-small">
+Telegram:
+<a class="telegram"
+href="https://t.me/carder506"
+target="_blank">
+@carder506
+</a>
 
-        Telegram:
-        <a
-            class="telegram"
-            href="https://t.me/carder506"
-            target="_blank"
-        >
-            @carder506
-        </a>
+<br>
 
-        <br>
+Email:
+<a href="mailto:kmeena25196@gmail.com">
+kmeena25196@gmail.com
+</a>
 
-        Email:
-        <a href="mailto:kmeena25196@gmail.com">
-            kmeena25196@gmail.com
-        </a>
-
-    </div>
+</div>
 
 </div>
 
 </footer>
-
 
 
 <!-- BUY MODAL -->
@@ -813,210 +297,125 @@ input:focus {
 
 <div class="modal-box">
 
-
 <div class="modal-header">
 
-    <div>
+<div>
 
-        <h2>
-            Buy UC
-        </h2>
+<h2>Buy UC</h2>
 
-        <p style="color:#777;font-size:13px;margin-top:4px">
-            Complete your order
-        </p>
+<p style="color:#777;font-size:13px;margin-top:4px">
+Complete your order
+</p>
 
-    </div>
+</div>
 
-    <button
-        class="close"
-        onclick="closeModal()"
-    >
-        ×
-    </button>
+<button class="close" onclick="closeModal()">×</button>
 
 </div>
 
 
-
-<label>
-    Player ID
-</label>
+<label>Player ID</label>
 
 <input
-    type="text"
-    id="playerId"
-    placeholder="Enter your Player ID"
+type="text"
+id="playerId"
+placeholder="Enter your Player ID"
 />
 
 
-
-<label>
-    Select UC Package
-</label>
-
+<label>Select UC Package</label>
 
 <div class="modal-packages">
 
-
 <button
 class="modal-pack selected"
-onclick="selectPackage(this,'60 UC','60')"
->
-
-<strong>
-60 UC
-</strong>
-
-<span>
-₹60
-</span>
-
+onclick="selectPackage(this,'60 UC','60')">
+<strong>60 UC</strong>
+<span>₹60</span>
 </button>
-
 
 <button
 class="modal-pack"
-onclick="selectPackage(this,'380 UC','300')"
->
-
-<strong>
-380 UC
-</strong>
-
-<span>
-₹300
-</span>
-
+onclick="selectPackage(this,'380 UC','300')">
+<strong>380 UC</strong>
+<span>₹300</span>
 </button>
-
 
 <button
 class="modal-pack"
-onclick="selectPackage(this,'750 UC','550')"
->
-
-<strong>
-750 UC
-</strong>
-
-<span>
-₹550
-</span>
-
+onclick="selectPackage(this,'750 UC','550')">
+<strong>750 UC</strong>
+<span>₹550</span>
 </button>
-
 
 <button
 class="modal-pack"
-onclick="selectPackage(this,'1850 UC','1600')"
->
-
-<strong>
-1850 UC
-</strong>
-
-<span>
-₹1,600
-</span>
-
+onclick="selectPackage(this,'1850 UC','1600')">
+<strong>1850 UC</strong>
+<span>₹1,600</span>
 </button>
-
 
 <button
 class="modal-pack"
-onclick="selectPackage(this,'3850 UC','3500')"
->
-
-<strong>
-3850 UC
-</strong>
-
-<span>
-₹3,500
-</span>
-
+onclick="selectPackage(this,'3850 UC','3500')">
+<strong>3850 UC</strong>
+<span>₹3,500</span>
 </button>
-
 
 <button
 class="modal-pack"
-onclick="selectPackage(this,'8100 UC','6000')"
->
-
-<strong>
-8100 UC
-</strong>
-
-<span>
-₹6,000
-</span>
-
+onclick="selectPackage(this,'8100 UC','6000')">
+<strong>8100 UC</strong>
+<span>₹6,000</span>
 </button>
-
 
 </div>
 
 
-
-<label>
-    Telegram / Email (optional)
-</label>
+<label>Telegram / Email (optional)</label>
 
 <input
-    type="text"
-    id="contact"
-    placeholder="Your contact information"
+type="text"
+id="contact"
+placeholder="Your contact information"
 />
-
 
 
 <div class="upi-box">
 
-<strong>
-UPI Payment
-</strong>
+<strong>UPI Payment</strong>
 
 <br>
 
 Pay to:
-<b>
-meena556@fam
-</b>
+<b>meena556@fam</b>
 
 <br>
 
 <small>
-Keep your UPI transaction/reference ID after payment.
+Tap the button below. On a supported Android phone,
+your installed UPI apps may appear in the chooser.
 </small>
 
 </div>
 
 
-
 <button
-    class="pay-button"
-    onclick="payNow()"
->
-    Pay with UPI
+class="pay-button"
+onclick="payNow()">
+Pay with UPI
 </button>
 
 
-
 <div
-    class="after-payment"
-    id="afterPayment"
->
+class="after-payment"
+id="afterPayment">
 
-<strong>
-Payment complete?
-</strong>
+<strong>After payment:</strong>
 
 <br>
 
-After completing payment, DM
-<b>@carder506</b>
-on Telegram with:
+DM <b>@carder506</b> on Telegram with:
 
 <br>
 
@@ -1027,176 +426,157 @@ on Telegram with:
 <br>
 
 <a
-    class="telegram-button"
-    href="https://t.me/carder506"
-    target="_blank"
->
-    Open Telegram
+class="telegram-button"
+href="https://t.me/carder506"
+target="_blank">
+Open Telegram
 </a>
 
 </div>
 
 
-
 <div class="order-note">
 
-<b>
-Important:
-</b>
+<b>Important:</b><br>
 
-This static HTML page cannot independently verify
-UPI payments or automatically deliver UC.
-For automatic fulfilment, use an authorised payment
-gateway/webhook and an authorised game top-up service.
-
-</div>
-
+This static HTML does not independently verify UPI payments
+or automatically deliver UC. For automatic fulfilment,
+use an authorised payment gateway/webhook and an authorised
+game top-up service.
 
 </div>
 
 </div>
-
+</div>
 
 
 <script>
 
 const UPI_ID = "meena556@fam";
-
 const UPI_NAME = "UniTopUp";
 
 let selectedPackage = "60 UC";
-
 let selectedPrice = "60";
-
 
 
 function openModal(packageName, price) {
 
-    document
-        .getElementById("modal")
-        .classList
-        .add("active");
+document
+.getElementById("modal")
+.classList
+.add("active");
 
 
-    if (packageName && price) {
+if (packageName && price) {
 
-        selectedPackage = packageName;
-
-        selectedPrice = price;
-
-        document
-            .querySelectorAll(".modal-pack")
-            .forEach(button => {
-                button.classList.remove("selected");
-            });
-
-    }
+selectedPackage = packageName;
+selectedPrice = price;
 
 }
 
+}
 
 
 function closeModal() {
 
-    document
-        .getElementById("modal")
-        .classList
-        .remove("active");
+document
+.getElementById("modal")
+.classList
+.remove("active");
 
 }
-
 
 
 function selectPackage(button, packageName, price) {
 
-    document
-        .querySelectorAll(".modal-pack")
-        .forEach(item => {
-            item.classList.remove("selected");
-        });
+document
+.querySelectorAll(".modal-pack")
+.forEach(function(item) {
 
+item.classList.remove("selected");
 
-    button.classList.add("selected");
+});
 
+button.classList.add("selected");
 
-    selectedPackage = packageName;
-
-    selectedPrice = price;
+selectedPackage = packageName;
+selectedPrice = price;
 
 }
-
 
 
 function payNow() {
 
-    const playerId =
-        document
-        .getElementById("playerId")
-        .value
-        .trim();
+const playerId =
+document
+.getElementById("playerId")
+.value
+.trim();
 
 
-    const contact =
-        document
-        .getElementById("contact")
-        .value
-        .trim();
+if (!playerId) {
 
+alert("Please enter your Player ID.");
 
-    if (!playerId) {
-
-        alert("Please enter your Player ID.");
-
-        return;
-
-    }
-
-
-    const note =
-        "UC Order | " +
-        selectedPackage +
-        " | Player ID: " +
-        playerId;
-
-
-    const upiUrl =
-        "upi://pay" +
-        "?pa=" +
-        encodeURIComponent(UPI_ID) +
-        "&pn=" +
-        encodeURIComponent(UPI_NAME) +
-        "&am=" +
-        encodeURIComponent(selectedPrice) +
-        "&cu=INR" +
-        "&tn=" +
-        encodeURIComponent(note);
-
-
-    window.location.href = upiUrl;
-
-
-    document
-        .getElementById("afterPayment")
-        .classList
-        .add("show");
+return;
 
 }
 
+
+const note =
+"UC Order | " +
+selectedPackage +
+" | Player ID: " +
+playerId;
+
+
+const upiUrl =
+"upi://pay" +
+"?pa=" +
+encodeURIComponent(UPI_ID) +
+"&pn=" +
+encodeURIComponent(UPI_NAME) +
+"&am=" +
+encodeURIComponent(selectedPrice) +
+"&cu=INR" +
+"&tn=" +
+encodeURIComponent(note);
+
+
+/*
+  Android will handle the UPI URI.
+  If multiple compatible UPI apps are installed,
+  the phone may show an app chooser.
+*/
+
+window.location.href = upiUrl;
+
+
+setTimeout(function() {
+
+document
+.getElementById("afterPayment")
+.classList
+.add("show");
+
+}, 700);
+
+}
 
 
 document
 .getElementById("modal")
 .addEventListener("click", function(event) {
 
-    if (event.target === this) {
+if (event.target === this) {
 
-        closeModal();
+closeModal();
 
-    }
+}
 
 });
 
 </script>
 
 </body>
-  </html>
+                                     </html>
