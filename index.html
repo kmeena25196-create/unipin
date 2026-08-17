@@ -1,120 +1,1202 @@
-<!doctype html>
-<html lang="hi">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>GameTop — UC & Game Top Up</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UniTopUp - UC Store</title>
+
 <style>
-:root{--bg:#f5f7fb;--card:#fff;--text:#18202b;--muted:#687386;--brand:#6d35ff;--brand2:#8b5cf6;--line:#e8ebf1;--green:#16a34a;--shadow:0 10px 30px rgba(25,20,55,.08)}
-*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text)}
-a{text-decoration:none;color:inherit}.top{background:#17121f;color:#fff;font-size:13px;text-align:center;padding:8px}
-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
-.nav{max-width:1180px;margin:auto;height:68px;display:flex;align-items:center;gap:28px;padding:0 18px}
-.logo{font-weight:900;font-size:24px;letter-spacing:-1px;color:var(--brand)}.logo span{color:#111827}
-.navlinks{display:flex;gap:22px;font-size:14px;color:#4b5563}.navlinks a:hover{color:var(--brand)}
-.actions{margin-left:auto;display:flex;gap:10px;align-items:center}.btn{border:0;border-radius:11px;padding:11px 16px;font-weight:700;cursor:pointer}.btn.primary{background:var(--brand);color:white}.btn.light{background:#f2efff;color:var(--brand)}
-.hero{max-width:1180px;margin:28px auto 0;padding:0 18px}.banner{background:linear-gradient(115deg,#25134c,#6d35ff 58%,#a78bfa);color:white;border-radius:24px;padding:42px;min-height:260px;display:flex;align-items:center;overflow:hidden;position:relative}
-.banner:after{content:"UC";position:absolute;right:35px;bottom:-55px;font-size:210px;font-weight:1000;opacity:.10}
-.banner h1{font-size:42px;line-height:1.04;margin:0 0 12px;max-width:600px}.banner p{max-width:590px;color:#eee7ff;font-size:16px}.hero-buttons{display:flex;gap:10px;margin-top:22px}.btn.white{background:white;color:#32186b}
-.section{max-width:1180px;margin:30px auto;padding:0 18px}.sectionhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.section h2{margin:0;font-size:23px}.muted{color:var(--muted);font-size:14px}
-.gamegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.game{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px;box-shadow:var(--shadow);cursor:pointer;transition:.2s}.game:hover{transform:translateY(-3px)}.gamepic{height:105px;border-radius:14px;display:grid;place-items:center;color:white;font-size:34px;font-weight:900;background:linear-gradient(135deg,#111827,#7c3aed)}.game:nth-child(2) .gamepic{background:linear-gradient(135deg,#0f766e,#22c55e)}.game:nth-child(3) .gamepic{background:linear-gradient(135deg,#111827,#ef4444)}.game:nth-child(4) .gamepic{background:linear-gradient(135deg,#1e3a8a,#38bdf8)}.game h3{margin:12px 0 4px;font-size:16px}.price{font-size:13px;color:var(--muted)}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.feature{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}.icon{width:42px;height:42px;border-radius:12px;background:#f0ebff;color:var(--brand);display:grid;place-items:center;font-weight:900;margin-bottom:12px}.feature h3{margin:0 0 6px}.feature p{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
-footer{margin-top:50px;background:#17121f;color:#ddd;padding:35px 18px}.foot{max-width:1180px;margin:auto;display:flex;justify-content:space-between;gap:20px}.foot small{color:#aaa}
-.modal{display:none;position:fixed;inset:0;background:rgba(10,8,18,.58);z-index:30;align-items:center;justify-content:center;padding:18px}.modal.open{display:flex}.box{background:#fff;width:min(520px,100%);border-radius:22px;padding:24px;box-shadow:0 30px 80px rgba(0,0,0,.25)}.boxhead{display:flex;justify-content:space-between;align-items:center}.close{border:0;background:#f2f3f5;border-radius:10px;width:38px;height:38px;cursor:pointer;font-size:20px}.packgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}.pack{border:1px solid var(--line);background:#fff;border-radius:13px;padding:14px;text-align:left;cursor:pointer}.pack.selected{border:2px solid var(--brand);background:#f7f3ff}.pack strong{display:block}.pack span{font-size:13px;color:var(--muted)}label{font-size:13px;font-weight:700;display:block;margin:13px 0 6px}input{width:100%;padding:13px;border:1px solid #dfe3ea;border-radius:11px;font-size:15px}.upi{background:#f4fff6;border:1px solid #b8e8c0;border-radius:14px;padding:14px;margin:15px 0}.upi strong{color:#087a24}.maint{display:flex;align-items:center;justify-content:space-between;padding:12px;border:1px dashed #d7dbe3;border-radius:11px;margin-top:10px;font-size:13px}.status{font-weight:800;color:#b45309}.notice{font-size:12px;color:var(--muted);line-height:1.5;margin-top:12px}
-@media(max-width:800px){.navlinks{display:none}.banner{padding:28px}.banner h1{font-size:32px}.gamegrid{grid-template-columns:repeat(2,1fr)}.cards{grid-template-columns:1fr}.foot{flex-direction:column}.nav{gap:10px}}
-@media(max-width:480px){.gamegrid{grid-template-columns:1fr}.packgrid{grid-template-columns:1fr}.banner{min-height:300px}}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f6fa;
+    color: #171717;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.topbar {
+    background: #17121f;
+    color: white;
+    text-align: center;
+    padding: 9px;
+    font-size: 13px;
+}
+
+header {
+    background: white;
+    border-bottom: 1px solid #e5e5e5;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.nav {
+    max-width: 1150px;
+    margin: auto;
+    height: 68px;
+    padding: 0 18px;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.logo {
+    color: #6d35ff;
+    font-size: 24px;
+    font-weight: 900;
+}
+
+.logo span {
+    color: #111;
+}
+
+.navlinks {
+    display: flex;
+    gap: 22px;
+    color: #555;
+    font-size: 14px;
+}
+
+.navlinks a:hover {
+    color: #6d35ff;
+}
+
+.navbutton {
+    margin-left: auto;
+    background: #6d35ff;
+    color: white;
+    border: none;
+    padding: 11px 18px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.hero {
+    max-width: 1150px;
+    margin: 28px auto;
+    padding: 0 18px;
+}
+
+.banner {
+    min-height: 280px;
+    border-radius: 24px;
+    padding: 45px;
+    color: white;
+    background: linear-gradient(
+        115deg,
+        #241149,
+        #6d35ff,
+        #9b7cff
+    );
+    display: flex;
+    align-items: center;
+}
+
+.banner h1 {
+    font-size: 43px;
+    line-height: 1.05;
+    margin-bottom: 15px;
+}
+
+.banner p {
+    max-width: 600px;
+    color: #eee;
+    line-height: 1.6;
+}
+
+.hero-btn {
+    margin-top: 22px;
+    background: white;
+    color: #36156e;
+    border: none;
+    padding: 13px 20px;
+    border-radius: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.section {
+    max-width: 1150px;
+    margin: 35px auto;
+    padding: 0 18px;
+}
+
+.section-title {
+    margin-bottom: 18px;
+}
+
+.section-title h2 {
+    font-size: 24px;
+}
+
+.section-title p {
+    color: #707070;
+    margin-top: 5px;
+}
+
+.packages {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+}
+
+.package {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 17px;
+    padding: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.package:hover {
+    transform: translateY(-4px);
+    border-color: #6d35ff;
+}
+
+.ucbox {
+    height: 100px;
+    border-radius: 13px;
+    background: linear-gradient(135deg,#171717,#7139ef);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 29px;
+    font-weight: 900;
+}
+
+.package h3 {
+    margin-top: 13px;
+    font-size: 18px;
+}
+
+.price {
+    color: #6d35ff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 7px;
+}
+
+.buy-small {
+    width: 100%;
+    margin-top: 13px;
+    border: none;
+    background: #6d35ff;
+    color: white;
+    padding: 11px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 17px;
+}
+
+.feature {
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 16px;
+    padding: 21px;
+}
+
+.feature-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 11px;
+    background: #eee8ff;
+    color: #6d35ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.feature h3 {
+    margin-bottom: 7px;
+}
+
+.feature p {
+    color: #666;
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.maintenance {
+    margin-top: 12px;
+    padding: 11px;
+    border: 1px dashed #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+}
+
+.status {
+    color: #b45309;
+    font-weight: bold;
+}
+
+footer {
+    margin-top: 50px;
+    background: #17121f;
+    color: white;
+    padding: 35px 18px;
+}
+
+.footer-inner {
+    max-width: 1150px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.footer-small {
+    color: #aaa;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.telegram {
+    color: #45b7ed;
+    font-weight: bold;
+}
+
+/* MODAL */
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.65);
+    z-index: 50;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    background: white;
+    width: 100%;
+    max-width: 520px;
+    max-height: 92vh;
+    overflow-y: auto;
+    border-radius: 21px;
+    padding: 25px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    font-size: 24px;
+}
+
+.close {
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 10px;
+    background: #eee;
+    font-size: 21px;
+    cursor: pointer;
+}
+
+label {
+    display: block;
+    margin-top: 17px;
+    margin-bottom: 7px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 13px;
+    border: 1px solid #d9dce2;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #6d35ff;
+}
+
+.modal-packages {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.modal-pack {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 13px;
+    text-align: left;
+    cursor: pointer;
+}
+
+.modal-pack strong {
+    display: block;
+}
+
+.modal-pack span {
+    color: #777;
+    font-size: 13px;
+}
+
+.modal-pack.selected {
+    border: 2px solid #6d35ff;
+    background: #f5f1ff;
+}
+
+.upi-box {
+    margin-top: 17px;
+    padding: 15px;
+    border-radius: 13px;
+    background: #f1fff4;
+    border: 1px solid #b8e7c0;
+    line-height: 1.6;
+}
+
+.upi-box strong {
+    color: #087a24;
+}
+
+.pay-button {
+    width: 100%;
+    margin-top: 15px;
+    border: none;
+    border-radius: 11px;
+    padding: 14px;
+    background: #6d35ff;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.order-note {
+    margin-top: 13px;
+    padding: 13px;
+    background: #f6f6f6;
+    border-radius: 11px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.6;
+}
+
+.after-payment {
+    display: none;
+    margin-top: 15px;
+    background: #effcf2;
+    border: 1px solid #b9e7c1;
+    border-radius: 13px;
+    padding: 15px;
+    line-height: 1.6;
+}
+
+.after-payment.show {
+    display: block;
+}
+
+.telegram-button {
+    display: inline-block;
+    margin-top: 10px;
+    background: #229ed9;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 9px;
+    font-weight: bold;
+}
+
+@media(max-width:800px) {
+
+    .navlinks {
+        display: none;
+    }
+
+    .banner {
+        padding: 30px;
+    }
+
+    .banner h1 {
+        font-size: 34px;
+    }
+
+    .packages {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .features {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-inner {
+        flex-direction: column;
+    }
+}
+
+@media(max-width:500px) {
+
+    .packages {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-packages {
+        grid-template-columns: 1fr;
+    }
+
+    .banner {
+        min-height: 300px;
+    }
+}
 </style>
 </head>
+
 <body>
-<div class="top">⚡ Instant game top-up • UPI payment available</div>
+
+<div class="topbar">
+    ⚡ Fast UC Top Up • UPI Payment Available
+</div>
+
 <header>
-  <nav class="nav">
-    <div class="logo">Game<span>Top</span></div>
-    <div class="navlinks"><a href="#games">Games</a><a href="#offers">Offers</a><a href="#why">Why us</a><a href="#support">Support</a></div>
-    <div class="actions"><button class="btn light" onclick="openTopup()">Top Up</button><button class="btn primary" onclick="openTopup()">Buy UC</button></div>
-  </nav>
+
+<nav class="nav">
+
+    <div class="logo">
+        Uni<span>TopUp</span>
+    </div>
+
+    <div class="navlinks">
+        <a href="#packages">UC Packages</a>
+        <a href="#payment">Payment</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <button class="navbutton" onclick="openModal()">
+        Buy UC
+    </button>
+
+</nav>
+
 </header>
 
 <main>
+
 <section class="hero">
-  <div class="banner">
-    <div>
-      <h1>Power up your game.<br>Get UC in seconds.</h1>
-      <p>Simple, clean and mobile-friendly game top-up storefront. Choose a pack, enter your player ID and pay using UPI.</p>
-      <div class="hero-buttons"><button class="btn white" onclick="openTopup()">Buy UC Now</button><a class="btn" style="background:#ffffff22;color:#fff;border:1px solid #ffffff44" href="#games">Explore Games</a></div>
+
+    <div class="banner">
+
+        <div>
+
+            <h1>
+                Get UC.<br>
+                Simple & Fast.
+            </h1>
+
+            <p>
+                Choose your UC package, enter your Player ID
+                and continue with UPI payment.
+                After payment, send your order details on Telegram.
+            </p>
+
+            <button class="hero-btn" onclick="openModal()">
+                Buy UC Now
+            </button>
+
+        </div>
+
     </div>
-  </div>
+
 </section>
 
-<section class="section" id="games">
-  <div class="sectionhead"><div><h2>Popular Games</h2><div class="muted">Fast top-up for your favourite titles</div></div></div>
-  <div class="gamegrid">
-    <div class="game" onclick="openTopup('BGMI')"><div class="gamepic">BGMI</div><h3>Battlegrounds Mobile India</h3><div class="price">UC Top Up • From ₹75</div></div>
-    <div class="game" onclick="openTopup('MLBB')"><div class="gamepic">ML</div><h3>Mobile Legends</h3><div class="price">Diamonds • From ₹49</div></div>
-    <div class="game" onclick="openTopup('VAL')"><div class="gamepic">VAL</div><h3>Valorant</h3><div class="price">VP • From ₹99</div></div>
-    <div class="game" onclick="openTopup('ROBLOX')"><div class="gamepic">R</div><h3>Roblox</h3><div class="price">Robux • From ₹99</div></div>
-  </div>
+
+<section class="section" id="packages">
+
+    <div class="section-title">
+
+        <h2>UC Packages</h2>
+
+        <p>
+            Select your required UC package
+        </p>
+
+    </div>
+
+
+    <div class="packages">
+
+
+        <div class="package" onclick="openModal('60 UC','60')">
+
+            <div class="ucbox">
+                60 UC
+            </div>
+
+            <h3>
+                60 UC
+            </h3>
+
+            <div class="price">
+                ₹60
+            </div>
+
+            <button class="buy-small">
+                Buy Now
+            </button>
+
+        </div>
+
+
+        <div class="package" onclick="openModal('380 UC','300')">
+
+            <div class="ucbox">
+                380 UC
+            </div>
+
+            <h3>
+                380 UC
+            </h3>
+
+            <div class="price">
+                ₹300
+            </div>
+
+            <button class="buy-small">
+                Buy Now
+            </button>
+
+        </div>
+
+
+        <div class="package" onclick="openModal('750 UC','550')">
+
+            <div class="ucbox">
+                750 UC
+            </div>
+
+            <h3>
+                750 UC
+            </h3>
+
+            <div class="price">
+                ₹550
+            </div>
+
+            <button class="buy-small">
+                Buy Now
+            </button>
+
+        </div>
+
+
+        <div class="package" onclick="openModal('1850 UC','1600')">
+
+            <div class="ucbox">
+                1850 UC
+            </div>
+
+            <h3>
+                1850 UC
+            </h3>
+
+            <div class="price">
+                ₹1,600
+            </div>
+
+            <button class="buy-small">
+                Buy Now
+            </button>
+
+        </div>
+
+
+        <div class="package" onclick="openModal('3850 UC','3500')">
+
+            <div class="ucbox">
+                3850 UC
+            </div>
+
+            <h3>
+                3850 UC
+            </h3>
+
+            <div class="price">
+                ₹3,500
+            </div>
+
+            <button class="buy-small">
+                Buy Now
+            </button>
+
+        </div>
+
+
+        <div class="package" onclick="openModal('8100 UC','6000')">
+
+            <div class="ucbox">
+                8100 UC
+            </div>
+
+            <h3>
+                8100 UC
+            </h3>
+
+            <div class="price">
+                ₹6,000
+            </div>
+
+            <button class="buy-small">
+                Buy Now
+            </button>
+
+        </div>
+
+
+    </div>
+
 </section>
 
-<section class="section" id="offers">
-  <div class="sectionhead"><div><h2>Today's Highlights</h2><div class="muted">Good value, clear pricing</div></div></div>
-  <div class="cards">
-    <div class="feature"><div class="icon">⚡</div><h3>Quick Checkout</h3><p>Select a denomination and continue to the payment screen without unnecessary steps.</p></div>
-    <div class="feature"><div class="icon">₹</div><h3>UPI Ready</h3><p>Use your own UPI app to complete payment. Add your merchant UPI ID in the HTML settings below.</p></div>
-    <div class="feature"><div class="icon">✓</div><h3>Transparent Status</h3><p>Other payment methods can remain marked as maintenance until you connect a real payment gateway.</p></div>
-  </div>
+
+<section class="section" id="payment">
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                UPI
+            </div>
+
+            <h3>
+                UPI Payment
+            </h3>
+
+            <p>
+                Pay using UPI.
+                UPI ID:
+                <strong>meena556@fam</strong>
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ✓
+            </div>
+
+            <h3>
+                Easy Ordering
+            </h3>
+
+            <p>
+                Select a package and enter your Player ID
+                to start your order.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ₹
+            </div>
+
+            <h3>
+                Other Payments
+            </h3>
+
+            <p>
+                Cards, wallets and netbanking are currently unavailable.
+            </p>
+
+            <div class="maintenance">
+
+                <span>
+                    Other methods
+                </span>
+
+                <span class="status">
+                    Maintenance
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
 </section>
 
-<section class="section" id="why">
-  <div class="sectionhead"><div><h2>Payment Methods</h2><div class="muted">Only the method you enable is shown as active</div></div></div>
-  <div class="cards">
-    <div class="feature"><div class="icon">UPI</div><h3>UPI</h3><p>Active — Google Pay, PhonePe, Paytm and other UPI apps can be used through your merchant UPI ID.</p></div>
-    <div class="feature"><div class="icon">CC</div><h3>Cards</h3><p>Maintenance</p><div class="maint"><span>Visa / Mastercard</span><span class="status">Maintenance</span></div></div>
-    <div class="feature"><div class="icon">₿</div><h3>Other Methods</h3><p>Maintenance</p><div class="maint"><span>Wallet / Netbanking</span><span class="status">Maintenance</span></div></div>
-  </div>
-</section>
 </main>
 
-<footer id="support">
-  <div class="foot"><div><div class="logo" style="color:#a78bfa">Game<span style="color:#fff">Top</span></div><small>Independent game top-up storefront.</small></div><div><small>Support: add your WhatsApp / email here<br>© 2026 GameTop</small></div></div>
-</footer>
 
-<div class="modal" id="modal">
-  <div class="box">
-    <div class="boxhead"><div><h2 style="margin:0">Buy UC</h2><div class="muted" id="gameLabel">BGMI</div></div><button class="close" onclick="closeTopup()">×</button></div>
-    <label>Player ID</label><input id="player" placeholder="Enter your game player ID">
-    <label>Select UC Pack</label>
-    <div class="packgrid">
-      <button class="pack selected" onclick="selectPack(this,'60 UC','₹60')"><strong>60 UC</strong><span>₹60</span></button>
-      <button class="pack" onclick="selectPack(this,'325 UC','₹300')"><strong>325 UC</strong><span>₹300</span></button>
-      <button class="pack" onclick="selectPack(this,'660 UC','₹550')"><strong>660 UC</strong><span>₹550</span></button>
-      <button class="pack" onclick="selectPack(this,'1800 UC','₹1,600')"><strong>1800 UC</strong><span>₹1,600</span></button>
+<footer id="contact">
+
+<div class="footer-inner">
+
+    <div>
+
+        <div class="logo">
+            Uni<span style="color:white">TopUp</span>
+        </div>
+
+        <div class="footer-small">
+            UC top-up storefront
+        </div>
+
     </div>
-    <label>Email / WhatsApp (optional)</label><input id="contact" placeholder="For order confirmation">
-    <div class="upi"><strong>UPI Payment</strong><br><span id="upiText">Pay to: yourupi@upi</span><br><small>After paying, keep the UPI transaction ID. UPI ID: meena556@fam</small></div>
-    <button class="btn primary" style="width:100%;font-size:16px" onclick="pay()">Continue to UPI</button>
-    <div class="notice">Demo storefront: this HTML does not independently verify UPI payments or deliver UC. For real automatic fulfilment, connect a legitimate payment gateway/webhook and an authorised game top-up API.</div>
-  </div>
+
+
+    <div class="footer-small">
+
+        Telegram:
+        <a
+            class="telegram"
+            href="https://t.me/carder506"
+            target="_blank"
+        >
+            @carder506
+        </a>
+
+        <br>
+
+        Email:
+        <a href="mailto:kmeena25196@gmail.com">
+            kmeena25196@gmail.com
+        </a>
+
+    </div>
+
 </div>
 
-<script>
-const CONFIG={upiId:"meena556@fam",upiName:"GameTop"};
-let currentGame="BGMI",selectedPack="60 UC",selectedPrice="₹60";
-document.getElementById("meena556@fam").textContent="Pay to: "+meena556@fam;
+</footer>
 
-function openTopup(game="BGMI"){currentGame=game;document.getElementById("gameLabel").textContent=currentGame;document.getElementById("modal").classList.add("open")}
-function closeTopup(){document.getElementById("modal").classList.remove("open")}
-function selectPack(el,pack,price){document.querySelectorAll(".pack").forEach(x=>x.classList.remove("selected"));el.classList.add("selected");selectedPack=pack;selectedPrice=price}
-function pay(){
-  const player=document.getElementById("player").value.trim();
-  if(!player){alert("Please enter your Player ID.");return}
-  
-  const amount=selectedPrice.replace(/[₹,]/g,"");
-  const note=encodeURIComponent(currentGame+" "+selectedPack+" | Player "+player);
-  const url=`upi://pay?pa=${encodeURIComponent(CONFIG.upiId)}&pn=${encodeURIComponent(CONFIG.upiName)}&am=${amount}&cu=INR&tn=${note}`;
-  window.location.href=url;
+
+
+<!-- BUY MODAL -->
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+
+<div class="modal-header">
+
+    <div>
+
+        <h2>
+            Buy UC
+        </h2>
+
+        <p style="color:#777;font-size:13px;margin-top:4px">
+            Complete your order
+        </p>
+
+    </div>
+
+    <button
+        class="close"
+        onclick="closeModal()"
+    >
+        ×
+    </button>
+
+</div>
+
+
+
+<label>
+    Player ID
+</label>
+
+<input
+    type="text"
+    id="playerId"
+    placeholder="Enter your Player ID"
+/>
+
+
+
+<label>
+    Select UC Package
+</label>
+
+
+<div class="modal-packages">
+
+
+<button
+class="modal-pack selected"
+onclick="selectPackage(this,'60 UC','60')"
+>
+
+<strong>
+60 UC
+</strong>
+
+<span>
+₹60
+</span>
+
+</button>
+
+
+<button
+class="modal-pack"
+onclick="selectPackage(this,'380 UC','300')"
+>
+
+<strong>
+380 UC
+</strong>
+
+<span>
+₹300
+</span>
+
+</button>
+
+
+<button
+class="modal-pack"
+onclick="selectPackage(this,'750 UC','550')"
+>
+
+<strong>
+750 UC
+</strong>
+
+<span>
+₹550
+</span>
+
+</button>
+
+
+<button
+class="modal-pack"
+onclick="selectPackage(this,'1850 UC','1600')"
+>
+
+<strong>
+1850 UC
+</strong>
+
+<span>
+₹1,600
+</span>
+
+</button>
+
+
+<button
+class="modal-pack"
+onclick="selectPackage(this,'3850 UC','3500')"
+>
+
+<strong>
+3850 UC
+</strong>
+
+<span>
+₹3,500
+</span>
+
+</button>
+
+
+<button
+class="modal-pack"
+onclick="selectPackage(this,'8100 UC','6000')"
+>
+
+<strong>
+8100 UC
+</strong>
+
+<span>
+₹6,000
+</span>
+
+</button>
+
+
+</div>
+
+
+
+<label>
+    Telegram / Email (optional)
+</label>
+
+<input
+    type="text"
+    id="contact"
+    placeholder="Your contact information"
+/>
+
+
+
+<div class="upi-box">
+
+<strong>
+UPI Payment
+</strong>
+
+<br>
+
+Pay to:
+<b>
+meena556@fam
+</b>
+
+<br>
+
+<small>
+Keep your UPI transaction/reference ID after payment.
+</small>
+
+</div>
+
+
+
+<button
+    class="pay-button"
+    onclick="payNow()"
+>
+    Pay with UPI
+</button>
+
+
+
+<div
+    class="after-payment"
+    id="afterPayment"
+>
+
+<strong>
+Payment complete?
+</strong>
+
+<br>
+
+After completing payment, DM
+<b>@carder506</b>
+on Telegram with:
+
+<br>
+
+• Player ID<br>
+• UC package<br>
+• UPI transaction/reference ID
+
+<br>
+
+<a
+    class="telegram-button"
+    href="https://t.me/carder506"
+    target="_blank"
+>
+    Open Telegram
+</a>
+
+</div>
+
+
+
+<div class="order-note">
+
+<b>
+Important:
+</b>
+
+This static HTML page cannot independently verify
+UPI payments or automatically deliver UC.
+For automatic fulfilment, use an authorised payment
+gateway/webhook and an authorised game top-up service.
+
+</div>
+
+
+</div>
+
+</div>
+
+
+
+<script>
+
+const UPI_ID = "meena556@fam";
+
+const UPI_NAME = "UniTopUp";
+
+let selectedPackage = "60 UC";
+
+let selectedPrice = "60";
+
+
+
+function openModal(packageName, price) {
+
+    document
+        .getElementById("modal")
+        .classList
+        .add("active");
+
+
+    if (packageName && price) {
+
+        selectedPackage = packageName;
+
+        selectedPrice = price;
+
+        document
+            .querySelectorAll(".modal-pack")
+            .forEach(button => {
+                button.classList.remove("selected");
+            });
+
+    }
+
 }
-document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeTopup()});
+
+
+
+function closeModal() {
+
+    document
+        .getElementById("modal")
+        .classList
+        .remove("active");
+
+}
+
+
+
+function selectPackage(button, packageName, price) {
+
+    document
+        .querySelectorAll(".modal-pack")
+        .forEach(item => {
+            item.classList.remove("selected");
+        });
+
+
+    button.classList.add("selected");
+
+
+    selectedPackage = packageName;
+
+    selectedPrice = price;
+
+}
+
+
+
+function payNow() {
+
+    const playerId =
+        document
+        .getElementById("playerId")
+        .value
+        .trim();
+
+
+    const contact =
+        document
+        .getElementById("contact")
+        .value
+        .trim();
+
+
+    if (!playerId) {
+
+        alert("Please enter your Player ID.");
+
+        return;
+
+    }
+
+
+    const note =
+        "UC Order | " +
+        selectedPackage +
+        " | Player ID: " +
+        playerId;
+
+
+    const upiUrl =
+        "upi://pay" +
+        "?pa=" +
+        encodeURIComponent(UPI_ID) +
+        "&pn=" +
+        encodeURIComponent(UPI_NAME) +
+        "&am=" +
+        encodeURIComponent(selectedPrice) +
+        "&cu=INR" +
+        "&tn=" +
+        encodeURIComponent(note);
+
+
+    window.location.href = upiUrl;
+
+
+    document
+        .getElementById("afterPayment")
+        .classList
+        .add("show");
+
+}
+
+
+
+document
+.getElementById("modal")
+.addEventListener("click", function(event) {
+
+    if (event.target === this) {
+
+        closeModal();
+
+    }
+
+});
+
 </script>
+
 </body>
   </html>
