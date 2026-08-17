@@ -1,6 +1,4 @@
-from pathlib import Path
-
-html = r'''<!doctype html>
+<!doctype html>
 <html lang="hi">
 <head>
 <meta charset="utf-8">
@@ -87,13 +85,13 @@ footer{margin-top:50px;background:#17121f;color:#ddd;padding:35px 18px}.foot{max
     <label>Player ID</label><input id="player" placeholder="Enter your game player ID">
     <label>Select UC Pack</label>
     <div class="packgrid">
-      <button class="pack selected" onclick="selectPack(this,'60 UC','₹75')"><strong>60 UC</strong><span>₹75</span></button>
-      <button class="pack" onclick="selectPack(this,'325 UC','₹380')"><strong>325 UC</strong><span>₹380</span></button>
-      <button class="pack" onclick="selectPack(this,'660 UC','₹750')"><strong>660 UC</strong><span>₹750</span></button>
-      <button class="pack" onclick="selectPack(this,'1800 UC','₹1,900')"><strong>1800 UC</strong><span>₹1,900</span></button>
+      <button class="pack selected" onclick="selectPack(this,'60 UC','₹60')"><strong>60 UC</strong><span>₹60</span></button>
+      <button class="pack" onclick="selectPack(this,'325 UC','₹300')"><strong>325 UC</strong><span>₹300</span></button>
+      <button class="pack" onclick="selectPack(this,'660 UC','₹550')"><strong>660 UC</strong><span>₹550</span></button>
+      <button class="pack" onclick="selectPack(this,'1800 UC','₹1,600')"><strong>1800 UC</strong><span>₹1,600</span></button>
     </div>
     <label>Email / WhatsApp (optional)</label><input id="contact" placeholder="For order confirmation">
-    <div class="upi"><strong>UPI Payment</strong><br><span id="upiText">Pay to: yourupi@upi</span><br><small>After paying, keep the UPI transaction ID. Replace the demo UPI ID in the HTML with your real merchant UPI ID.</small></div>
+    <div class="upi"><strong>UPI Payment</strong><br><span id="upiText">Pay to: yourupi@upi</span><br><small>After paying, keep the UPI transaction ID. UPI ID: meena556@fam</small></div>
     <button class="btn primary" style="width:100%;font-size:16px" onclick="pay()">Continue to UPI</button>
     <div class="notice">Demo storefront: this HTML does not independently verify UPI payments or deliver UC. For real automatic fulfilment, connect a legitimate payment gateway/webhook and an authorised game top-up API.</div>
   </div>
@@ -101,7 +99,7 @@ footer{margin-top:50px;background:#17121f;color:#ddd;padding:35px 18px}.foot{max
 
 <script>
 const CONFIG={upiId:"meena556@fam",upiName:"GameTop"};
-let currentGame="BGMI",selectedPack="60 UC",selectedPrice="₹75";
+let currentGame="BGMI",selectedPack="60 UC",selectedPrice="₹60";
 document.getElementById("upiText").textContent="Pay to: "+CONFIG.upiId;
 
 function openTopup(game="BGMI"){currentGame=game;document.getElementById("gameLabel").textContent=currentGame;document.getElementById("modal").classList.add("open")}
@@ -110,7 +108,7 @@ function selectPack(el,pack,price){document.querySelectorAll(".pack").forEach(x=
 function pay(){
   const player=document.getElementById("player").value.trim();
   if(!player){alert("Please enter your Player ID.");return}
-  if(CONFIG.upiId==="meena556@fam"){alert("Demo mode: पहले HTML में CONFIG.upiId को अपनी merchant UPI ID से बदलें.");return}
+  
   const amount=selectedPrice.replace(/[₹,]/g,"");
   const note=encodeURIComponent(currentGame+" "+selectedPack+" | Player "+player);
   const url=`upi://pay?pa=${encodeURIComponent(CONFIG.upiId)}&pn=${encodeURIComponent(CONFIG.upiName)}&am=${amount}&cu=INR&tn=${note}`;
@@ -119,9 +117,4 @@ function pay(){
 document.getElementById("modal").addEventListener("click",e=>{if(e.target.id==="modal")closeTopup()});
 </script>
 </body>
-</html>'''
-
-path = Path("/mnt/data/gametop_uc_store.html")
-path.write_text(html, encoding="utf-8")
-print(f"Created: {path}")
-
+  </html>
