@@ -1,37 +1,32 @@
-<div class="upi-payment">
-  <h2>Pay via UPI</h2>
+<script>
+function payNow() {
 
-  <p>UPI ID: <b>meena556@fam</b></p>
+    const playerId = document.getElementById("playerId").value.trim();
 
-  <img src="upi-qr.png" alt="UPI QR Code" width="250">
+    if (!playerId) {
+        alert("Please enter your Player ID.");
+        return;
+    }
 
-  <br><br>
+    const note =
+        "UC Order | " +
+        selectedPackage +
+        " | Player ID: " +
+        playerId;
 
-  <a
-    href="upi://pay?pa=meena556@fam&pn=YOUR%20NAME&cu=INR"
-    class="pay-button">
-    Pay Now
-  </a>
-</div>
+    const upiUrl =
+        "upi://pay" +
+        "?pa=" + encodeURIComponent("meena556@fam") +
+        "&pn=" + encodeURIComponent("UniTopUp") +
+        "&am=" + encodeURIComponent(selectedPrice) +
+        "&cu=INR" +
+        "&tn=" + encodeURIComponent(note);
 
-<style>
-  .upi-payment {
-    text-align: center;
-    padding: 25px;
-  }
+    // Android UPI chooser
+    window.location.href = upiUrl;
 
-  .upi-payment img {
-    max-width: 250px;
-    border-radius: 10px;
-  }
-
-  .pay-button {
-    display: inline-block;
-    padding: 12px 30px;
-    background: #111;
-    color: white;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-  }
-</style>
+    document
+        .getElementById("afterPayment")
+        .classList.add("show");
+}
+</script>
